@@ -26,7 +26,7 @@ echo -n "source-file ~/.config/tmux/tmux_user.conf" >> ~/.tmux.conf
 Now, for everything to work, you must clone this repository in your user configuration folder on Linux, according to the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html). Still in your terminal, type:
 
 ```bash
-git clone https://github.com/itamcampos/mytmuxfiles ~/.config/tmux
+git clone https://github.com/itamcampos/tmuxfiles ~/.config/tmux
 ```
 
 To test, open a new session with tmux
