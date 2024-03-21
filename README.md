@@ -9,6 +9,13 @@ The settings in this repository will be made to modify local behavior, only for 
 All tmux behavior in this repository will be defined within this file `~/.config/tmux/tmux_user.conf`.
 
 
+## Features included in this repository
+
+- Manual installation of [Tmux Resurrect](https://github.com/tmux-plugins/tmux-resurrect) to allow sessions to persist after system shutdown. This plugin was also installed using the official repository when it was still at this [commit](https://github.com/tmux-plugins/tmux-resurrect/commit/cff343cf9e81983d3da0c8562b01616f12e8d548). Click [here](https://github.com/tmux-plugins/tmux-resurrect/commit/cff343cf9e81983d3da0c8562b01616f12e8d548) to see the latest fix for this plugin, if it's still up, obviously.
+
+- Manual installation of [Tmux Continuum](https://github.com/tmux-plugins/tmux-continuum) to start tmux automatically after the computer/server is turned on. This plugin was installed using the official repository when it was still at this [commit](https://github.com/tmux-plugins/tmux-continuum/commit/0698e8f4b17d6454c71bf5212895ec055c578da0). Click [here](https://github.com/tmux-plugins/tmux-continuum/commit/0698e8f4b17d6454c71bf5212895ec055c578da0) to see the latest fix for this plugin.
+
+
 ## How to use
 
 To create the default tmux configuration file, type in your terminal:
@@ -42,7 +49,9 @@ The tmux settings in this repository don't use plugin manager, but that could ch
 
 ## References
 
- - [ArchLinux Docs](https://wiki.archlinux.org/title/tmux)
- - [Igor Irianto](https://dev.to/iggredible/useful-tmux-configuration-examples-k3g)
- - [Serhat Teker](https://dev.to/serhatteker/restore-tmux-sessions-after-reboot-7g6)
- - [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html)
+- [ArchLinux Docs](https://wiki.archlinux.org/title/tmux)
+- [Igor Irianto](https://dev.to/iggredible/useful-tmux-configuration-examples-k3g)
+- [Serhat Teker](https://dev.to/serhatteker/restore-tmux-sessions-after-reboot-7g6)
+- [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html)a
+- [Tmux Resurrect](https://github.com/tmux-plugins/tmux-resurrect)
+- [Tmux Continuum](https://github.com/tmux-plugins/tmux-continuum)
