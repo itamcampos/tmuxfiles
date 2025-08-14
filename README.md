@@ -39,13 +39,25 @@ Then:
 git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 ```
 
+Ensure the tpm script has execute permissions. You can set this using `chmod`:
+
+```bash
+chmod +x ~/.config/tmux/plugins/tpm/tpm
+```
+
 To test, open a new session with tmux
 
 ```bash
 tmux new -s main
 ```
 
-Press **prefix** + **I** (capital I) to install the plugins. The default prefix is **`​​Ctrl+b`**, so it would be **`Ctrl+b`** + **`I`**.
+### Installing plugins
+
+1. Add new plugin to ~/.tmux.conf with set -g @plugin '...'
+
+2. Press **prefix** + **I** (capital I) to install the plugins. The default prefix is **`​​Ctrl+b`**, so it would be **`Ctrl+b`** + **`I`**.
+
+### Other operations 
 
 - Save tmux environment: `prefix + Ctrl-s`
 - Restore tmux environment: `prefix + Ctrl-r`
