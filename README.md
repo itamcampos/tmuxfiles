@@ -43,7 +43,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 Ensure the tpm script has execute permissions. You can set this using `find` `+` `chmod`:
 
 ```bash
-# Dar todas as permissões necessárias
+# Grant all necessary permissions
 find ~/.tmux/plugins/tpm -type f \( -name "*.sh" -o -path "*/bin/*" -o -path "*/bindings/*" \) -exec chmod +x {} \;
 ```
 
