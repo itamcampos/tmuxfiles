@@ -4,9 +4,9 @@ I recommend using these settings on fresh tmux installations before any customiz
 
 By default tmux uses the `/etc/tmux.conf` configuration file to define its own global behavior. To define local behavior, only for the user, by default tmux uses the file `/home/<your user>/.tmux.conf` or just `~/.tmux.conf`.
 
-The settings in this repository will be made to modify local behavior, only for your user. The tmux configuration file will be used in its default path at: `~/.tmux.conf` to point to the `~/.config/tmux/main.conf` file.
+The settings in this repository will be made to modify local behavior, only for your user. The tmux configuration file will be used in its default path at: `~/.tmux.conf` to point to the `~/.tmux/main.conf` file.
 
-All tmux behavior in this repository will be defined within this file `~/.config/tmux/main.conf`.
+All tmux behavior in this repository will be defined within this file `~/.tmux/main.conf`.
 
 ## Features Included
 
@@ -24,26 +24,27 @@ touch ~/.tmux.conf
 Still in your terminal, set the path to the new tmux configuration file:
 
 ```bash
-echo -n "source-file ~/.config/tmux/tmux.conf" >> ~/.tmux.conf
+echo -n "source-file ~/.tmux/tmux.conf" >> ~/.tmux.conf
 ```
 
 Now, for everything to work, you must clone this repository in your user configuration folder on Linux, according to the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html). Still in your terminal, type:
 
 ```bash
-git clone https://github.com/itamcampos/tmuxfiles ~/.config/tmux
+git clone https://github.com/itamcampos/tmuxfiles ~/.tmux
 ```
 
 Then:
 
 ```bash
-git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+mkdir -p ~/.tmux/plugins
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
 Ensure the tpm script has execute permissions. You can set this using `find` `+` `chmod`:
 
 ```bash
 # Dar todas as permissões necessárias
-find ~/.config/tmux/plugins/tpm -type f \( -name "*.sh" -o -path "*/bin/*" -o -path "*/bindings/*" \) -exec chmod +x {} \;
+find ~/.tmux/plugins/tpm -type f \( -name "*.sh" -o -path "*/bin/*" -o -path "*/bindings/*" \) -exec chmod +x {} \;
 ```
 
 To test, open a new session with tmux
@@ -54,7 +55,7 @@ tmux new -s main
 
 ### Installing plugins
 
-1. Add new plugin to `~/.config/tmux/tmux.conf` with `set -g @plugin '...'`
+1. Add new plugin to `~/.tmux/tmux.conf` with `set -g @plugin '...'`
 
 2. Press **prefix** + **I** (capital I) to install the plugins. The default prefix is **`​​Ctrl+b`**, so it would be **`Ctrl+b`** + **`I`**.
 
@@ -95,18 +96,18 @@ This method simulates the standard installation process within a clean, temporar
 tmux kill-server
 
 # Give execute permission to all TPM scripts
-chmod +x ~/.config/tmux/plugins/tpm/tpm
-chmod +x ~/.config/tmux/plugins/tpm/bin/*
-chmod +x ~/.config/tmux/plugins/tpm/bindings/*
-chmod +x ~/.config/tmux/plugins/tpm/scripts/*
+chmod +x ~/.tmux/plugins/tpm/tpm
+chmod +x ~/.tmux/plugins/tpm/bin/*
+chmod +x ~/.tmux/plugins/tpm/bindings/*
+chmod +x ~/.tmux/plugins/tpm/scripts/*
 
 # Or do it all at once:
-find ~/.config/tmux/plugins/tpm -type f -name "*.sh" -exec chmod +x {} \;
-find ~/.config/tmux/plugins/tpm -type f -path "*/bin/*" -exec chmod +x {} \;
-find ~/.config/tmux/plugins/tpm -type f -path "*/bindings/*" -exec chmod +x {} \;
+find ~/.tmux/plugins/tpm -type f -name "*.sh" -exec chmod +x {} \;
+find ~/.tmux/plugins/tpm -type f -path "*/bin/*" -exec chmod +x {} \;
+find ~/.tmux/plugins/tpm -type f -path "*/bindings/*" -exec chmod +x {} \;
 
 # Or take a more concise approach
-find ~/.config/tmux/plugins/tpm -type f \( -name "*.sh" -o -path "*/bin/*" -o -path "*/bindings/*" \) -exec chmod +x {} \;
+find ~/.tmux/plugins/tpm -type f \( -name "*.sh" -o -path "*/bin/*" -o -path "*/bindings/*" \) -exec chmod +x {} \;
 
 # Launch a new, detached session named 'temp'.
 tmux new-session -d -s temp
@@ -120,7 +121,7 @@ tmux send-keys -t temp C-b I
 sleep 10
 
 # Verify that the plugin directories have been created.
-ls -la ~/.config/tmux/plugins/
+ls -la ~/.tmux/plugins/
 
 # Clean up by terminating the temporary session.
 tmux kill-session -t temp
@@ -132,10 +133,10 @@ This is often the most reliable method as it directly invokes the TPM installati
 
 ```sh
 # Set the environment variable required by the installation script.
-export TMUX_PLUGIN_MANAGER_PATH="$HOME/.config/tmux/plugins/"
+export TMUX_PLUGIN_MANAGER_PATH="$HOME/.tmux/plugins/"
 
 # Execute the installation script directly.
-~/.config/tmux/plugins/tpm/scripts/install_plugins.sh
+~/.tmux/plugins/tpm/scripts/install_plugins.sh
 ```
 
 ### 3. Complete Reinstallation of TPM
@@ -144,13 +145,13 @@ If the above methods fail, a complete reinstallation of the Tmux Plugin Manager 
 
 ```sh
 # Remove the current TPM installation directory.
-rm -rf ~/.config/tmux/plugins/tpm
+rm -rf ~/.tmux/plugins/tpm
 
 # Clone a fresh copy of the TPM repository from GitHub.
-git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Ensure all newly downloaded scripts and binaries are executable.
-find ~/.config/tmux/plugins/tpm -type f \( -name "*.sh" -o -path "*/bin/*" -o -path "*/bindings/*" \) -exec chmod +x {} \;
+find ~/.tmux/plugins/tpm -type f \( -name "*.sh" -o -path "*/bin/*" -o -path "*/bindings/*" \) -exec chmod +x {} \;
 
 # Test the new installation by starting a new tmux session.
 tmux kill-server
